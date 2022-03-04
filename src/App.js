@@ -1,10 +1,8 @@
-import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 // import Slider from "@material-ui/core/Slider";
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
 // import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import React, { useRef, useState } from "react";
