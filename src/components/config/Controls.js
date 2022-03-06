@@ -270,7 +270,7 @@ const Controls = forwardRef(
                 >
                   <Typography
                     variant="body1"
-                    style={{ color: "#fff",marginLeft:'43px' }}
+                    style={{ color: "#fff", marginLeft: '43px', marginRight: '6px' }}
                   >
                     {elapsedTime}/{totalDuration}
                   </Typography>
@@ -296,7 +296,7 @@ const Controls = forwardRef(
                     {[0.5, 1, 1.5, 2].map((rate) => (
                       <Button
                         key={rate}
-                        //   onClick={() => setState({ ...state, playbackRate: rate })}
+                        onChange={() => setState({ ...state, playbackRate: rate })}
                         onClick={() => onPlaybackRateChange(rate)}
                         variant="text"
                       >
@@ -310,6 +310,7 @@ const Controls = forwardRef(
                   </>
                 </Popover>
               </Grid>
+         
               <Grid item xs={1}>
                 <Button
                   onClick={handleClick}
@@ -317,7 +318,7 @@ const Controls = forwardRef(
                   className={classes.bottomIcons}
                   variant="text"
                 >
-                  <Typography>{playbackRate}X</Typography>
+                  <Typography style={{marginLeft:'16px'}}> {playbackRate}X</Typography>
                 </Button>
               </Grid>
               <Grid item xs={1}>
