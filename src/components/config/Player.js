@@ -203,7 +203,7 @@ function Player({ url }) {
     };
 
     const handleSeekChange = (e, newValue) => {
-        console.log({ newValue });
+        // console.log({ newValue });
         setState({ ...state, played: parseFloat(newValue / 100) });
     };
 
@@ -212,7 +212,7 @@ function Player({ url }) {
     };
 
     const handleSeekMouseUp = (e, newValue) => {
-        console.log({ value: e.target });
+        // console.log({ value: e.target });
         setState({ ...state, seeking: false });
         // console.log(sliderRef.current.value)
         playerRef.current.seekTo(newValue / 100, "fraction");
