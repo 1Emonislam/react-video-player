@@ -100,7 +100,7 @@ function ValueLabelComponent(props) {
 
 const Controls = forwardRef(
   (
-    {
+    { title,
       onSeek,
       onSeekMouseDown,
       onSeekMouseUp,
@@ -154,7 +154,7 @@ const Controls = forwardRef(
           >
             <Grid item>
               <Typography variant="h5" className="video-title" style={{ color: "#fff" }}>
-                Video Title
+                {title}
               </Typography>
             </Grid>
             <Grid item title="BookMark" style={{ cursor: 'pointer', color: 'white' }} onClick={onBookmark}>

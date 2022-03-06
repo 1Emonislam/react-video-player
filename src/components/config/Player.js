@@ -139,7 +139,7 @@ const format = (seconds) => {
     return `${mm}:${ss}`;
 };
 let count = 0;
-function Player({ url }) {
+function Player({ url, title }) {
     const classes = useStyles();
     // const [showControls, setShowControls] = useState(false);
     // var [count, setCount] = useState(0);
@@ -332,6 +332,7 @@ function Player({ url }) {
                         }}
                     />
                     <Controls
+                        title={ title}
                         ref={controlsRef}
                         onSeek={handleSeekChange}
                         onSeekMouseDown={handleSeekMouseDown}
