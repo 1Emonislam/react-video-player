@@ -270,7 +270,7 @@ const Controls = forwardRef(
                 >
                   <Typography
                     variant="body1"
-                    style={{ color: "#fff", marginLeft: '43px', marginRight: '6px' }}
+                    style={{ color: "#fff", marginLeft: '63px', fontSize: '12px', marginRight: '6px' }}
                   >
                     {elapsedTime}/{totalDuration}
                   </Typography>
@@ -310,7 +310,7 @@ const Controls = forwardRef(
                   </>
                 </Popover>
               </Grid>
-         
+
               <Grid item xs={1}>
                 <Button
                   onClick={handleClick}
@@ -318,7 +318,7 @@ const Controls = forwardRef(
                   className={classes.bottomIcons}
                   variant="text"
                 >
-                  <Typography style={{marginLeft:'16px'}}> {playbackRate}X</Typography>
+                  <Typography style={{ marginLeft: '16px' }}> {playbackRate}X</Typography>
                 </Button>
               </Grid>
               <Grid item xs={1}>
