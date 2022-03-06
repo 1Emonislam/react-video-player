@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import React, { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import screenful from "screenfull";
-import Controls from "./components/Controls";
+import Controls from "./components/config/Controls";
 
 const useStyles = makeStyles((theme) => ({
   playerWrapper: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   controlsWrapper: {
-    visibility: "hidden",
+    visibility: "visible",
     position: "absolute",
     top: 0,
     left: 0,
@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
     background: "rgba(0,0,0,0.4)",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   topControls: {
     display: "flex",
-    justifyContent: "flex-end",
-    padding: theme.spacing(2),
+    justifyContent: "center",
+    padding: theme.spacing(0),
   },
   middleControls: {
     display: "flex",
@@ -48,25 +48,25 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
 
-    // background: "rgba(0,0,0,0.6)",
-    // height: 60,
-    padding: theme.spacing(2),
+   background: "rgba(0,0,0,0.6)",
+   height: 60,
+    padding: theme.spacing(0),
   },
 
   bottomControls: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
-    // height:40,
+    justifyContent: "center",
+     height:40,
   },
 
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
   },
   controlIcons: {
     color: "#777",
 
-    fontSize: 50,
+    fontSize: 30,
     transform: "scale(0.9)",
     "&:hover": {
       color: "#fff",

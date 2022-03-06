@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+  .video-title {
+    font-size: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .video-title {
+    font-size: 18px;
+  }
+}

@@ -17,7 +17,7 @@ import VolumeMute from "@material-ui/icons/VolumeOff";
 import VolumeUp from "@material-ui/icons/VolumeUp";
 import PropTypes from "prop-types";
 import React, { forwardRef } from "react";
-
+import './Controls.css';
 const useStyles = makeStyles((theme) => ({
   controlsWrapper: {
     visibility: "hidden",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   controlIcons: {
     color: "#777",
 
-    fontSize: 50,
+    fontSize: 30,
     transform: "scale(0.9)",
     "&:hover": {
       color: "#fff",
@@ -151,22 +151,15 @@ const Controls = forwardRef(
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            style={{ padding: 16 }}
+            style={{ padding: '5px 10px' }}
           >
             <Grid item>
-              <Typography variant="h5" style={{ color: "#fff" }}>
+              <Typography variant="h5"className="video-title" style={{ color: "#fff" }}>
                 Video Title
               </Typography>
             </Grid>
-            <Grid item>
-              <Button
-                onClick={onBookmark}
-                variant="contained"
-                color="primary"
-                startIcon={<BookmarkIcon />}
-              >
-                Bookmark
-              </Button>
+            <Grid item >
+              <BookmarkIcon title="BookMark"style={{cursor:'pointer',color: 'white'}} />
             </Grid>
           </Grid>
           <Grid container direction="row" alignItems="center" justifyContent="center">
@@ -205,7 +198,7 @@ const Controls = forwardRef(
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            style={{ padding: 16 }}
+            style={{ padding: "0 20px" }}
           >
             <Grid item xs={12}>
               <PrettoSlider
@@ -219,37 +212,39 @@ const Controls = forwardRef(
                 onChange={onSeek}
                 onMouseDown={onSeekMouseDown}
                 onChangeCommitted={onSeekMouseUp}
-                // onDuration={onDuration}
+              // onDuration={onDuration}
               />
             </Grid>
 
-            <Grid item>
-              <Grid container alignItems="center">
+            <Grid container spacing={0} justifyContent="space-between" alignItems="center">
+              <Grid item xs={1}>
                 <IconButton
                   onClick={onPlayPause}
                   className={classes.bottomIcons}
                 >
                   {playing ? (
-                    <PauseIcon fontSize="large" />
+                    <PauseIcon fontSize="small" />
                   ) : (
-                    <PlayArrowIcon fontSize="large" />
+                    <PlayArrowIcon fontSize="small" />
                   )}
                 </IconButton>
-
+              </Grid>
+              <Grid item xs={2}>
                 <IconButton
                   // onClick={() => setState({ ...state, muted: !state.muted })}
                   onClick={onMute}
                   className={`${classes.bottomIcons} ${classes.volumeButton}`}
                 >
                   {muted ? (
-                    <VolumeMute fontSize="large" />
+                    <VolumeMute fontSize="small" />
                   ) : volume > 0.5 ? (
-                    <VolumeUp fontSize="large" />
+                    <VolumeUp fontSize="small" />
                   ) : (
-                    <VolumeDown fontSize="large" />
+                    <VolumeDown fontSize="small" />
                   )}
                 </IconButton>
-
+              </Grid>
+              <Grid item xs={2}>
                 <Slider
                   min={0}
                   max={100}
@@ -260,6 +255,8 @@ const Controls = forwardRef(
                   onMouseDown={onSeekMouseDown}
                   onChangeCommitted={onVolumeSeekDown}
                 />
+              </Grid>
+              <Grid item xs={2}>
                 <Button
                   variant="text"
                   onClick={
@@ -272,62 +269,66 @@ const Controls = forwardRef(
                 >
                   <Typography
                     variant="body1"
-                    style={{ color: "#fff", marginLeft: 16 }}
+                    style={{ color: "#fff" }}
                   >
                     {elapsedTime}/{totalDuration}
                   </Typography>
                 </Button>
               </Grid>
-            </Grid>
-
-            <Grid item>
-              <Button
-                onClick={handleClick}
-                aria-describedby={id}
-                className={classes.bottomIcons}
-                variant="text"
-              >
-                <Typography>{playbackRate}X</Typography>
-              </Button>
-
-              <Popover
-                container={ref.current}
-                open={open}
-                id={id}
-                onClose={handleClose}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-              >
-                <Grid container direction="column-reverse">
-                  {[0.5, 1, 1.5, 2].map((rate) => (
-                    <Button
-                      key={rate}
-                      //   onClick={() => setState({ ...state, playbackRate: rate })}
-                      onClick={() => onPlaybackRateChange(rate)}
-                      variant="text"
-                    >
-                      <Typography
-                        color={rate === playbackRate ? "secondary" : "inherit"}
+              <Grid item xs={2}>
+                <Popover
+                  container={ref.current}
+                  open={open}
+                  id={id}
+                  onClose={handleClose}
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  transformOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                >
+                  <>
+                    {[0.5, 1, 1.5, 2].map((rate) => (
+                      <Button
+                        key={rate}
+                        //   onClick={() => setState({ ...state, playbackRate: rate })}
+                        onClick={() => onPlaybackRateChange(rate)}
+                        variant="text"
                       >
-                        {rate}X
-                      </Typography>
-                    </Button>
-                  ))}
-                </Grid>
-              </Popover>
-              <IconButton
-                onClick={onToggleFullScreen}
-                className={classes.bottomIcons}
-              >
-                <FullScreen fontSize="large" />
-              </IconButton>
+                        <Typography
+                          color={rate === playbackRate ? "secondary" : "inherit"}
+                        >
+                          {rate}X
+                        </Typography>
+                      </Button>
+                    ))}
+                  </>
+                </Popover>
+              </Grid>
+              <Grid item xs={1}>
+                <Button
+                  onClick={handleClick}
+                  aria-describedby={id}
+                  className={classes.bottomIcons}
+                  variant="text"
+                  justifyContent="space-between"
+                >
+                  <Typography>{playbackRate}X</Typography>
+                </Button>
+              </Grid>
+              <Grid item xs={1}>
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton
+                  onClick={onToggleFullScreen}
+                  className={classes.bottomIcons}
+                ><FullScreen fontSize="small" />
+                </IconButton>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
