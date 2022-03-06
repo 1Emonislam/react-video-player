@@ -270,7 +270,7 @@ const Controls = forwardRef(
                 >
                   <Typography
                     variant="body1"
-                    style={{ color: "#fff" }}
+                    style={{ color: "#fff",marginLeft:'43px' }}
                   >
                     {elapsedTime}/{totalDuration}
                   </Typography>
