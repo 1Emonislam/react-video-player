@@ -104,7 +104,6 @@ const Controls = forwardRef(
       onSeek,
       onSeekMouseDown,
       onSeekMouseUp,
-      onDuration,
       onRewind,
       onPlayPause,
       onFastForward,
@@ -127,6 +126,7 @@ const Controls = forwardRef(
   ) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const noderef = React.useRef(null)
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -134,10 +134,9 @@ const Controls = forwardRef(
     const handleClose = () => {
       setAnchorEl(null);
     };
-
+    let [state, setState] = React.useState(null);
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
-
     return (
       <div ref={ref} className={classes.controlsWrapper}>
         <Grid
@@ -154,12 +153,12 @@ const Controls = forwardRef(
             style={{ padding: '5px 10px' }}
           >
             <Grid item>
-              <Typography variant="h5"className="video-title" style={{ color: "#fff" }}>
+              <Typography variant="h5" className="video-title" style={{ color: "#fff" }}>
                 Video Title
               </Typography>
             </Grid>
-            <Grid item >
-              <BookmarkIcon title="BookMark"style={{cursor:'pointer',color: 'white'}} />
+            <Grid item title="BookMark" style={{ cursor: 'pointer', color: 'white' }} onClick={onBookmark}>
+              <BookmarkIcon />
             </Grid>
           </Grid>
           <Grid container direction="row" alignItems="center" justifyContent="center">
@@ -212,7 +211,7 @@ const Controls = forwardRef(
                 onChange={onSeek}
                 onMouseDown={onSeekMouseDown}
                 onChangeCommitted={onSeekMouseUp}
-              // onDuration={onDuration}
+                noderef={noderef}
               />
             </Grid>
 
@@ -231,7 +230,9 @@ const Controls = forwardRef(
               </Grid>
               <Grid item xs={2}>
                 <IconButton
-                  // onClick={() => setState({ ...state, muted: !state.muted })}
+                  onBlur={() => {
+                    setState({ ...state, muted: !state.muted })
+                  }}
                   onClick={onMute}
                   className={`${classes.bottomIcons} ${classes.volumeButton}`}
                 >
@@ -315,7 +316,6 @@ const Controls = forwardRef(
                   aria-describedby={id}
                   className={classes.bottomIcons}
                   variant="text"
-                  justifyContent="space-between"
                 >
                   <Typography>{playbackRate}X</Typography>
                 </Button>

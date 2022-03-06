@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
 
-   background: "rgba(0,0,0,0.6)",
-   height: 60,
+    background: "rgba(0,0,0,0.6)",
+    height: 60,
     padding: theme.spacing(0),
   },
 
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-     height:40,
+    height: 40,
   },
 
   button: {
@@ -171,7 +171,6 @@ function App() {
     playing,
     // controls,
     light,
-
     muted,
     loop,
     playbackRate,
@@ -363,7 +362,7 @@ function App() {
           />
         </div>
 
-        <Grid container style={{ marginTop: 20 }} spacing={3}>
+        <Grid container style={{ marginTop: 20 }} justifyContent="center" spacing={3}>
           {bookmarks.map((bookmark, index) => (
             <Grid key={index} item>
               <Paper
@@ -377,9 +376,9 @@ function App() {
                 }}
                 elevation={3}
               >
-                <img alt="anonymous"crossOrigin="anonymous" src={bookmark.image} />
+                <img alt="anonymous" crossOrigin="anonymous" src={bookmark.image} />
                 <Typography variant="body2" align="center">
-                at {bookmark.display}
+                 Bookmark at {bookmark.display}
                 </Typography>
               </Paper>
             </Grid>
